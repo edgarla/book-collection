@@ -32,17 +32,17 @@ allprojects {
     repositories {
         mavenCentral()
     }
+
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 }
 
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'jacoco'
     apply plugin: 'io.spring.dependency-management'
-
-    compileJava {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
 
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web:2.7.5'
