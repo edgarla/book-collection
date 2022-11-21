@@ -3,7 +3,7 @@ package org.book.collection.rest;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.book.collection.model.Book;
-import org.book.collection.requests.AddBookRequest;
+import org.book.collection.rest.requests.AddBookRequest;
 import org.book.collection.services.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MimeTypeUtils;

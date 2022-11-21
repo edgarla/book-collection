@@ -1,4 +1,4 @@
-package org.book.collection.requests;
+package org.book.collection.rest.requests;
 
 public record AddBookRequest(String name) {
 
