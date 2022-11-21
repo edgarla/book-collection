@@ -1,0 +1,6 @@
+rootProject.name = 'books-collection'
+
+include 'domain'
+include 'application'
+include 'infrastructure'
+

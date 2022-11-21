@@ -1,0 +1,11 @@
+compileJava {
+    dependsOn project(':application').tasks.build
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation project(':application')
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.7.5'
+    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.5.1'
+}

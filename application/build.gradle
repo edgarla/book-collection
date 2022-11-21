@@ -1,0 +1,8 @@
+compileJava {
+    dependsOn project(':domain').tasks.build
+}
+
+dependencies {
+    implementation project(':domain')
+}
+

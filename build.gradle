@@ -1,0 +1,79 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'jacoco-report-aggregation'
+    id 'org.springframework.boot' version '2.7.5'
+}
+
+group 'org.book.collection'
+version '1.0'
+
+dependencies {
+    implementation project(':domain')
+    implementation project(':application')
+    implementation project(':infrastructure')
+
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.5'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.7.5'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.7.5'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.5'
+}
+
+jar {
+    enabled = false
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'jacoco'
+    apply plugin: 'io.spring.dependency-management'
+
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web:2.7.5'
+
+        compileOnly 'org.projectlombok:lombok:1.18.24'
+
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.7.5'
+        annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.5'
+    }
+
+    test {
+        useJUnitPlatform()
+        finalizedBy jacocoTestReport
+    }
+
+    jacocoTestReport {
+        dependsOn test
+        reports {
+            html.enabled true
+            xml.enabled false
+        }
+    }
+
+    jar {
+        enabled = true
+    }
+}
+
+
+
+
+
